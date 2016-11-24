@@ -20,7 +20,7 @@
                   <span>
                     <a class="btn btn-info" href="<?php echo url('formupdate'); ?>/<?php echo $row->id ?>">
                       <span class="glyphicon glyphicon-edit"></span>Update</a>
-                    <a class="btn btn-danger" href="<?php echo url('uploads/logo/delete'); ?>/<?php echo $row->id ?>">
+                    <a class="btn btn-danger" href="<?php echo url('uploads/logo/delete'); ?>/<?php echo $row->id ?>" onClick="alert('Sure you delete!')">
                       <span class="glyphicon glyphicon-remove-circle"></span>Delete</a></p>
                   </span>
                 </div>

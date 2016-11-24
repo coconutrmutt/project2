@@ -82,7 +82,7 @@ class UploadImageController extends Controller {
 					  }
 
 			      if($validator->passes()){
-			        $destinationPath = 'uploads/logo';
+			        $destinationPath = 'uploads\logo';
 			        $size = $file->getSize();
 			        $type = $file->getMimeType();
 			        $extension = $file->getClientOriginalExtension();
@@ -121,8 +121,23 @@ class UploadImageController extends Controller {
 
 	public function getDeleteImage($id){
 
+			 $filename = DB::table('tbl_image')->where('id', $id)->get();
+			    $filname =  "C:\\xampp\\htdocs\\project2\\public"."\\".$filename[0]->image;
+			    $success = File::delete($filname);
+			    echo "<br>";
+			    if($success){
+			    echo 'Yes';
+				}else{
+				echo 'No--->'.$success;
+				}
+				if(File::exists($filname)){
+					File::delete($filname); 
+				}else{
+					echo "Delete Success!";
+					echo File::exists($filname);
+				}
 
-			Upload::delete_image($id);
+				Upload::delete_image($id);
 
 			return Redirect::to('admin');
 	}
@@ -156,7 +171,7 @@ class UploadImageController extends Controller {
 					 return Redirect::to('formupdate/'.$id);
 				}
 
-			$upload = 'uploads/logo';
+			$upload = 'uploads\logo';
 			$extension = $logo->getClientOriginalExtension();
 			$size = $logo->getSize();
 			$type = $logo->getMimeType();
